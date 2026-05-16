@@ -1,0 +1,155 @@
+INFO:     Started server process [49560]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52758 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51455 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51455 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64430 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59301 - "GET / HTTP/1.1" 200 OK
+C:\Python312\python.exe: No module named uvicorn
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\click\core.py", line 1514, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\click\core.py", line 1435, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\click\core.py", line 1298, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\click\core.py", line 853, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\main.py", line 412, in main
+    run(
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\main.py", line 579, in run
+    server.run()
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\server.py", line 66, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\server.py", line 70, in serve
+    await self._serve(sockets)
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\server.py", line 77, in _serve
+    config.load()
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\config.py", line 435, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\app\main.py", line 12, in <module>
+    settings = get_settings()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\app\core\config.py", line 30, in get_settings
+    return Settings()
+           ^^^^^^^^^^
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\pydantic_settings\main.py", line 247, in __init__
+    super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+  File "C:\Users\itzan\Documents\Codex\2026-05-13\files-mentioned-by-the-user-ai\.venv\Lib\site-packages\pydantic\main.py", line 250, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+force_llm
+  Extra inputs are not permitted [type=extra_forbidden, input_value='true', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+INFO:     Started server process [52184]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59242 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59242 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59435 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59435 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     Started server process [14320]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:64040 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60398 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60398 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50502 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57299 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54666 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54666 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53718 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50473 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50644 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62530 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50644 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55691 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57804 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57804 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57804 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57804 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     Started server process [42708]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53736 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53736 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53736 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62647 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60717 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60306 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60306 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49944 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62210 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     Started server process [35096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49679 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49679 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49679 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53039 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64874 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52569 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52569 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62893 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60263 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54636 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54636 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65170 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65341 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65419 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65419 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62792 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62519 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60041 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60041 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60041 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53645 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50441 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53224 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53224 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58218 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53224 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62020 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62538 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62538 - "GET /api/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58941 - "GET /api/documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62538 - "GET /api/leads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56181 - "GET /api/analytics HTTP/1.1" 200 OK

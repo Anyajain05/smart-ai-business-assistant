@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart AI Business Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-screen active">
+    <div class="login-wrapper">
+      <div class="login-container">
+        <div class="login-brand">
+          <div class="login-logo">AI</div>
+          <h1>Business Assistant</h1>
+          <p>AI-powered operations for SMEs</p>
+        </div>
+        
+        <form id="loginForm" class="login-form">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input id="loginEmail" type="email" value="admin@example.com" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" value="admin123" placeholder="Enter password" required>
+          </div>
+          <div id="loginError" class="error-message"></div>
+          <button type="submit" class="btn-primary btn-large">Sign In</button>
+          <div class="login-footer">
+            <p>Demo: admin@example.com / admin123</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="appContainer" class="app-container hidden">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="mark">AI</span>
+        <div>
+          <strong>Business Assistant</strong>
+          <small>Operations cockpit</small>
+        </div>
+      </div>
+      <nav>
+        <button data-view="assistant" class="nav-btn active">💬 Assistant</button>
+        <button data-view="leads" class="nav-btn">📋 Leads</button>
+        <button data-view="documents" class="nav-btn">📄 Documents</button>
+        <button data-view="workflows" class="nav-btn">⚙️ Workflows</button>
+        <button data-view="builder" class="nav-btn">🧩 Flow Builder</button>
+        <button data-view="webhooks" class="nav-btn">🔔 Webhooks</button>
+        <button data-view="evaluator" class="nav-btn">✅ AI Eval</button>
+        <button data-view="monitoring" class="nav-btn">📡 Monitoring</button>
+        <button data-view="analytics" class="nav-btn">📊 Analytics</button>
+      </nav>
+      <div class="user-section">
+        <div class="user-info">
+          <div id="userName" class="user-name">Admin User</div>
+          <div id="userEmail" class="user-email">admin@example.com</div>
+        </div>
+        <button id="logoutBtn" class="btn-logout">Sign out</button>
+      </div>
+    </aside>
+
+    <main>
+      <!-- ASSISTANT VIEW -->
+      <section id="assistant" class="view active">
+        <header>
+          <div>
+            <h1>Assistant</h1>
+            <p>Ask questions, capture leads, and get grounded answers from your documents</p>
+          </div>
+        </header>
+        <div class="assistant-grid">
+          <div class="chat-panel">
+            <div id="messages" class="messages">
+              <div class="chat-empty-state">
+                <div class="chat-empty-badge">Ready when you are</div>
+                <h3>Start with a business question</h3>
+                <p>Try pricing, sales strategy, support workflows, or ask for a question to prompt the assistant.</p>
+              </div>
+            </div>
+            <form id="chatForm" class="composer">
+              <label class="toggle-inline" title="Stream tokens (SSE)">
+                <input type="checkbox" id="useStream"> Stream
+              </label>
+              <button type="button" id="voiceBtn" class="btn-icon" title="Voice input (browser)">🎤</button>
+              <label class="btn-icon" title="Image (multimodal)">
+                📷
+                <input type="file" id="imageInput" accept="image/*" hidden>
+              </label>
+              <input id="chatInput" placeholder="Ask about services, pricing, policies..." autocomplete="off">
+              <button type="submit" class="btn-send">Send</button>
+            </form>
+          </div>
+          <div class="side-panel">
+            <div class="panel-section">
+              <div class="panel-header">📚 Sources</div>
+              <div id="chatSources" class="sources-list">No response yet.</div>
+            </div>
+            <div class="panel-section">
+              <div class="panel-header">🎯 Lead Info</div>
+              <div id="chatLead" class="lead-info">No lead detected.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEADS VIEW -->
+      <section id="leads" class="view">
+        <header><h1>Leads</h1><p>Captured prospects with auto-classification</p></header>
+        <div id="leadList" class="lead-table"></div>
+      </section>
+
+      <!-- DOCUMENTS VIEW -->
+      <section id="documents" class="view">
+        <header><h1>Documents</h1><p>Upload knowledge base for grounded Q&A</p></header>
+        <form id="docForm" class="upload-form">
+          <input type="file" id="docFile" accept=".txt,.md,.csv,.json" required>
+          <button type="submit" class="btn-primary">Upload Document</button>
+        </form>
+        <div id="docList" class="cards"></div>
+      </section>
+
+      <!-- WORKFLOWS VIEW -->
+      <section id="workflows" class="view">
+        <header><h1>Workflows</h1><p>Run automations: email summary, CRM sync, calendar booking</p></header>
+        <div class="workflow-grid">
+          <button data-workflow="email_summary" class="workflow-btn">✉️ Email Summary</button>
+          <button data-workflow="crm_sync" class="workflow-btn">🔗 CRM Sync</button>
+          <button data-workflow="calendar_booking" class="workflow-btn">📅 Calendar Booking</button>
+        </div>
+        <div class="workflow-section">
+          <label>Workflow Input:</label>
+          <textarea id="workflowPayload" placeholder="Enter workflow input as JSON or text...">{"text":"Please summarize this customer email and follow up tomorrow about pricing."}</textarea>
+          <div id="workflowResult" class="workflow-result">Run a workflow to see output.</div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS VIEW -->
+      <section id="analytics" class="view">
+        <header><h1>Analytics</h1><p>Real-time metrics, agent traces, and workflow logs</p></header>
+        <div id="bonusStatus" class="bonus-strip"></div>
+        <div id="metricCards" class="metrics"></div>
+        <div class="two-col">
+          <div class="log-section"><h2>🤖 Agent Trace</h2><div id="agentLogs" class="log-list"></div></div>
+          <div class="log-section"><h2>⚙️ Workflow Logs</h2><div id="workflowLogs" class="log-list"></div></div>
+        </div>
+      </section>
+
+      <!-- FLOW BUILDER -->
+      <section id="builder" class="view">
+        <header><h1>Workflow builder</h1><p>Drag steps into the pipeline, then run the chain (bonus)</p></header>
+        <div class="builder-wrap">
+          <div class="builder-palette">
+            <h3>Steps</h3>
+            <div class="palette-item" draggable="true" data-step="email_summary">✉️ Email summary</div>
+            <div class="palette-item" draggable="true" data-step="crm_sync">🔗 CRM sync</div>
+            <div class="palette-item" draggable="true" data-step="calendar_booking">📅 Calendar booking</div>
+          </div>
+          <div id="builderDrop" class="builder-drop">
+            <p class="muted">Drop steps here in order</p>
+          </div>
+        </div>
+        <div class="builder-actions">
+          <button type="button" id="builderClear" class="btn-secondary">Clear</button>
+          <button type="button" id="builderRun" class="btn-primary">Run chain</button>
+        </div>
+        <pre id="builderResult" class="builder-result">Build a chain to execute automations sequentially.</pre>
+      </section>
+
+      <!-- WEBHOOKS -->
+      <section id="webhooks" class="view">
+        <header><h1>Webhooks</h1><p>HTTP callbacks for <code>lead.created</code>, <code>workflow.completed</code>, and chain events</p></header>
+        <form id="webhookForm" class="card-form">
+          <label>Target URL</label>
+          <input id="whUrl" type="url" placeholder="https://example.com/hooks/assistant" required>
+          <label>Signing secret</label>
+          <input id="whSecret" type="text" placeholder="shared-secret-for-hmac" required>
+          <label>Events (comma-separated, or * )</label>
+          <input id="whEvents" type="text" value="*" placeholder="lead.created,workflow.completed">
+          <button type="submit" class="btn-primary">Register webhook</button>
+        </form>
+        <div id="webhookList" class="cards"></div>
+      </section>
+
+      <!-- EVALUATOR -->
+      <section id="evaluator" class="view">
+        <header><h1>AI evaluation</h1><p>Rubric scoring for grounding, safety, and keyword coverage</p></header>
+        <form id="evalForm" class="card-form">
+          <label>Question</label>
+          <textarea id="evalQuestion" rows="2" placeholder="User question..."></textarea>
+          <label>Assistant answer</label>
+          <textarea id="evalAnswer" rows="5" placeholder="Paste assistant reply to score..."></textarea>
+          <label>Expected keywords (comma-separated)</label>
+          <input id="evalKeywords" type="text" placeholder="pricing, SLA, onboarding">
+          <button type="submit" class="btn-primary">Run evaluation</button>
+        </form>
+        <pre id="evalResult" class="builder-result">Scores appear here.</pre>
+      </section>
+
+      <!-- MONITORING -->
+      <section id="monitoring" class="view">
+        <header><h1>Monitoring</h1><p>Health checks, webhook deliveries, and infra flags</p></header>
+        <div id="healthBox" class="health-box"></div>
+        <h2 class="subhead">Recent webhook deliveries</h2>
+        <div id="deliveryList" class="log-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

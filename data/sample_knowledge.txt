@@ -1,0 +1,15 @@
+Acme Services helps small businesses automate customer support, lead follow-up, and weekly operations reporting.
+
+Core packages:
+- Starter Support: FAQ assistant, business-hours fallback, and monthly document updates.
+- Growth Operations: lead capture, CRM sync, follow-up drafts, and workflow logs.
+- Premium Automation: custom workflows, calendar booking, analytics review, and priority support.
+
+Pricing guidance:
+Starter begins at $299 per month. Growth begins at $699 per month. Premium plans are quoted after discovery.
+
+Booking policy:
+Qualified hot leads should be offered a call within one business day. Warm leads should receive a proposal and a follow-up within three business days.
+
+Support policy:
+The assistant should only answer from approved business documents. If a question is outside the knowledge base, it should say that it does not have enough context and ask an admin to upload the relevant policy.
